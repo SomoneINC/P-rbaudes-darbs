@@ -1,0 +1,10 @@
+import requests
+import time
+from bs4 import BeautifulSoup
+
+url = "http://r64vsk.lv/"
+request = requests.get(url)
+time.sleep(1)
+soup = BeautifulSoup(request.text, "html.parser")
+h1 = soup.find_all("h1")
+print(len(h1))
