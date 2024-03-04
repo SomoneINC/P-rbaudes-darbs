@@ -1,0 +1,14 @@
+import requests
+import time
+import re
+from bs4 import BeautifulSoup
+
+url = "http://r64vsk.lv/"
+request = requests.get(url)
+time.sleep(1)
+soup = BeautifulSoup(request.text, "html.parser")
+Saraksts = soup.find('div', class_="r64-events")
+Saraksts = str(Saraksts)
+clean_text = re.sub(r'<(p|br|strong|div)[^>]*>', '', Saraksts)
+clean_text = re.sub(r'</(p|br|strong|div)[^>]*>', '', clean_text)
+print(clean_text)
