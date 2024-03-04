@@ -7,12 +7,9 @@ url = "http://r64vsk.lv/"
 request = requests.get(url)
 time.sleep(1)
 soup = BeautifulSoup(request.text, "html.parser")
-Saraksts = soup.find('div', class_="r64-events")
-Saraksts = str(Saraksts)
-clean_text = re.sub(r'<(p|br|strong|div)[^>]*>', '', Saraksts)
-clean_text = re.sub(r'</(p|br|strong|div)[^>]*>', '', clean_text)
+Saraksts = soup.find('div', class_="r64-events").text
 printed = False
-lines_list = clean_text.splitlines()
+lines_list = Saraksts.splitlines()
 while True:
     print("Kura klases izmaiņas gribat zināt? \n")
     user=input()
